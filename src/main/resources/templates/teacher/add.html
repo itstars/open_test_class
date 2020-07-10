@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>课程添加页面</title>
+</head>
+<body>
+<div th:insert="~{index::loginfo}"></div>
+<h1 align="center">课程添加页面</h1>
+<div id="myForm">
+    <form th:action="@{/teacher/addItem}" method="post">
+        <div>
+            <label>课程名称</label>
+            <input type="text" placeholder="name" name="name">
+        </div>
+        <div>
+            <label>课程简介</label>
+            <input type="textarea" placeholder="content" name="content">
+        </div>
+        <input type="submit" th:value="确定">
+    </form>
+</div>
+</body>
+</html>

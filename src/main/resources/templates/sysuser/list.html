@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表页面</title>
+</head>
+<body>
+<div th:insert="~{index::loginfo}"></div>
+<h1 align="center">系统用户列表</h1>
+<div id="sysUsers">
+    <h3> <a th:href="@{/user/add}">新增用户</a></h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th align="left">用户id</th>
+                <th width="100px" align="left">用户名称</th>
+                <th width="80px" align="left">用户类型</th>
+                <th width="80px" align="center">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user:${userList}">
+                <td th:text="${user.getId()}"></td>
+                <td th:text="${user.getUsername()}"></td>
+                <td th:text="${user.getRole().name()}"></td>
+                <td>
+                    <a th:href="@{/user/detail/{id}(id=${user.getId()})}">编辑</a>
+                    <a th:href="@{/user/delete/{id}(id=${user.getId()})}">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

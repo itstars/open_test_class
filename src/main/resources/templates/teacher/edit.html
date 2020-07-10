@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>课程修改页面</title>
+</head>
+<body>
+<div th:insert="~{index::loginfo}"></div>
+<h1 align="center">课程修改页面</h1>
+<div id="myForm">
+    <form th:action="@{/teacher/editItem}" method="post">
+        <input type="hidden" name="id" th:value="${course.getId()}">
+        <div>
+            <label>课程名称</label>
+            <input th:value="${course.getName()}" type="text" placeholder="name" name="name">
+        </div>
+        <div>
+            <label>课程简介</label>
+            <input th:value="${course.getContent()}"  type="textarea" placeholder="content" name="content">
+        </div>
+        <div>
+            <label>课程状态</label>
+            <div>
+                <input th:checked="${course.getStatus()=='0'}" type="radio" th:value="0" name="status">
+                <label>无效</label>
+            </div>
+            <div>
+                <input th:checked="${course.getStatus()=='1'}" type="radio" th:value="1" name="status">
+                <label>有效</label>
+            </div>
+        </div>
+        <div>
+            <label>订阅数量</label>
+            <input th:value="${course.getOrdernums()==null?0:course.getOrdernums()}" type="text" readonly="readonly" name="ordernums">
+        </div>
+        <input type="submit" th:value="确定">
+    </form>
+</div>
+</body>
+</html>

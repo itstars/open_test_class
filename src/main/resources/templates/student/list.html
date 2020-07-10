@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>课程列表页面</title>
+</head>
+<body>
+<div th:insert="~{index::loginfo}"></div>
+<h1 align="center">课程订阅管理</h1>
+<div id="courseOrder">
+    <h3>课程列表</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th align="left">课程id</th>
+                <th width="150px" align="left">课程名称</th>
+                <th width="80px" align="left">订阅数量</th>
+                <th width="80px" align="center">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="course:${courseList}">
+                <td th:text="${course.getId()}"></td>
+                <td th:text="${course.getName()}"></td>
+                <td th:text="${course.getOrdernums()==null?0:course.getOrdernums()}"></td>
+                <td>
+                    <a th:href="@{/student/order/{id}(id=${course.getId()})}">订阅</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <h3>已订阅课程</h3>
+    <div id="myOrder">
+        <table border="1">
+            <thead>
+            <tr>
+                <th align="left">课程id</th>
+                <th width="150px" align="left">课程名称</th>
+                <th width="80px" align="left">订阅数量</th>
+                <th width="80px" align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mycourse:${myCourseList}">
+                <td th:text="${mycourse.getId()}"></td>
+                <td th:text="${mycourse.getName()}"></td>
+                <td th:text="${mycourse.getOrdernums()==null?0:mycourse.getOrdernums()}"></td>
+                <td>
+                    <a th:href="@{/student/cancel/{id}(id=${mycourse.getId()})}">取消</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

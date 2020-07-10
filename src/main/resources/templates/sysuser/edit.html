@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户修改页面</title>
+</head>
+<body>
+<div th:insert="~{index::loginfo}"></div>
+<h1 align="center">用户修改页面</h1>
+<div id="myForm">
+    <form th:action="@{/user/editItem}" method="post">
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        <div>
+            <label>用户名称</label>
+            <input th:value="${user.getUsername()}" type="text" placeholder="username" name="username">
+        </div>
+        <div>
+            <label>用户密码</label>
+            <input value="***" type="password" placeholder="password" name="password">
+        </div>
+        <div>
+            <label>用户角色</label>
+            <select name="role">
+                <option th:selected="${role.name()==user.getRole().name()}" th:each="role:${roleList}" th:text="${role.name()}" th:value="${role.name()}"></option>
+            </select>
+        </div>
+        <input type="submit" th:value="确定">
+    </form>
+</div>
+</body>
+</html>

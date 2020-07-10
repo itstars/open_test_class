@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页</title>
+</head>
+<body>
+<div>
+    <div id="myLogin">
+        <div style="float: left"><a th:href="@{/login}"> 登录 </a></div>
+    </div>
+    <h2 align="center">系统说明</h2>
+    <div id="sysInfo">
+        <h3> 初始化数据说明：</h3>
+        <p>系统初始化4个用户账号，分别为admin、teacher、stu1和stu2；密码都是123。<br/>其中，
+             admin具有用户操作权限,可以对用户管理菜单进行操作；
+             teacher具有教师权限，可对课程管理菜单进行操作；
+             stu1和stu2具有学生权限，可对订阅管理菜单进行操作。</p>
+        <p>课程管理初始化了语文、数学、英语三门课程，均为有效状态。</p>
+            <h3> 按照需求，系统菜单分为以下三个菜单，可点击任意菜单或上方登录按钮进行登录。</h3>
+        <ul>
+            <li> <a th:href="@{/login}"> 用户管理 </a></li>
+            <li> <a th:href="@{/login}"> 课程管理 </a></li>
+            <li> <a th:href="@{/login}"> 订阅管理 </a></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

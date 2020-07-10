@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<div>
+    <div id="myLogin" style="display:block;float:right" th:fragment="loginfo">
+        <div sec:authorize="!isAuthenticated()"><a th:href="@{/login}"> 登录 </a></div>
+        <div sec:authorize="isAuthenticated()"> 欢迎你：<span sec:authentication="name"></span> &nbsp;&nbsp;
+         <a th:href="@{/logout}">退出</a></div>
+    </div>
+    <h2>系统菜单</h2>
+    <div id="sysMenu">
+        <ul>
+            <li sec:authorize="hasRole('system')"> <a th:href="@{/user/list}"> 用户管理 </a></li>
+            <li sec:authorize="hasRole('teacher')"> <a th:href="@{/teacher/list}"> 课程管理 </a></li>
+            <li sec:authorize="hasRole('student')"> <a th:href="@{/student/list}"> 订阅管理 </a></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
